@@ -1,0 +1,19 @@
+.PHONY: all clean
+
+CC = gcc
+CFLAGS = -g -Wall
+
+all: taskmanager
+
+taskmanager: taskmanager.o processes.o
+	$(CC) $(CFLAGS) -o taskmanager taskmanager.o processes.o
+
+processes.o: processes.c processes.h
+	$(CC) $(CFLAGS) -o processes.o -c processes.c
+
+
+taskmanager.o: taskmanager.c processes.h
+	$(CC) $(CFLAGS) -o taskmanager.o -c taskmanager.c
+
+clean:
+	rm -f *.o taskmanager

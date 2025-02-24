@@ -1,0 +1,2 @@
+gcc -c maths.c -o maths.o
+ar rcs maths.a maths.o

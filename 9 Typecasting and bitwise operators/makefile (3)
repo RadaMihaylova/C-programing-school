@@ -1,0 +1,18 @@
+CC = gcc
+CFLAGS = -Wall -std=c99
+LIBS = -lm
+
+TARGET = quadraticroots
+
+SRC = quadraticroots.c main.c
+
+OBJ = $(SRC:.c=.o)
+
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(LIBS)
+
+%.o: %.c quadraticroots.h
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm -f $(OBJ) $(TARGET)
